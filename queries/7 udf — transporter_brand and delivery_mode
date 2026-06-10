@@ -1,0 +1,19 @@
+-- create function to extract carrier brand from transporter name
+-- input: transporter (STRING)  output: "Chrono" or "Dpd" (STRING)
+CREATE OR REPLACE FUNCTION course17.transporter_brand(transporter STRING) AS(
+  CASE
+    WHEN transporter LIKE "%Chrono%" THEN "Chrono"
+    WHEN transporter LIKE "%DPD%" THEN "Dpd"
+    ELSE NULL
+  END
+);
+
+-- create function to extract delivery mode from transporter name
+-- input: transporter (STRING)  output: "Pickup" or "Home" (STRING)
+CREATE OR REPLACE FUNCTION course17.delivery_mode(transporter STRING) AS(
+  CASE
+    WHEN transporter LIKE "%Pickup%" THEN "Pickup"
+    WHEN transporter LIKE "%Home%" THEN "Home"
+    ELSE NULL
+  END
+);
