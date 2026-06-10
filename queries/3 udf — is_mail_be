@@ -1,0 +1,13 @@
+-- create reusable function for Belgium segmentation
+-- input: journey_name (STRING)  output: 1 or 0 (INT64)
+CREATE OR REPLACE FUNCTION course17.is_mail_be(journey_name STRING) AS
+(IF(journey_name LIKE "%nlbe%", 1, 0));
+
+-- use the function in a query
+SELECT
+  journey_id,
+  journey_name,
+  course17.is_mail_be(journey_name) AS mail_be,
+  sent_nb
+FROM course17.gwz_mail_17
+ORDER BY sent_nb DESC;
