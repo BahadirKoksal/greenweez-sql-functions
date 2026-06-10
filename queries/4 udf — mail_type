@@ -1,0 +1,10 @@
+-- create function to classify campaign type from journey_name
+-- input: journey_name (STRING)  output: campaign type (STRING)
+CREATE OR REPLACE FUNCTION `course17.mail_type`(journey_name STRING) AS (
+  CASE
+    WHEN journey_name LIKE "%panier_abandonne%" THEN "abandoned_basket"
+    WHEN journey_name LIKE "%back_in_stock%" THEN "back_in_stock"
+    WHEN journey_name LIKE "%nl%" THEN "newsletter"
+    ELSE NULL
+  END
+);
