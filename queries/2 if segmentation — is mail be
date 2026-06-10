@@ -1,0 +1,9 @@
+-- label Belgium campaigns as binary flag using IF
+SELECT
+  journey_id,
+  journey_name,
+  IF(journey_name LIKE "%_nlbe_%", 1, 0) AS mail_be,
+  sent_nb
+FROM course17.gwz_mail_17
+ORDER BY sent_nb DESC;
+-- finding: high-volume campaigns are not Belgium segment
