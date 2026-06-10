@@ -1,0 +1,3 @@
+-- full table preview
+SELECT *
+FROM course17.gwz_mail_17;
