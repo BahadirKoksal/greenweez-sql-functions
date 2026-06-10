@@ -1,0 +1,17 @@
+-- create reusable NPS function
+-- input: global_note (INT64)  output: -1, 0, or 1 (INT64)
+CREATE OR REPLACE FUNCTION course17.nps(global_note INT64) AS(
+  CASE
+    WHEN global_note IN (9, 10) THEN 1
+    WHEN global_note IN (7, 8) THEN 0
+    WHEN global_note BETWEEN 0 AND 6 THEN -1
+    ELSE NULL
+  END
+);
+
+-- test the function
+SELECT
+  global_note,
+  course17.nps(global_note) AS nps_score
+FROM course17.gwz_nps_17
+LIMIT 20;
