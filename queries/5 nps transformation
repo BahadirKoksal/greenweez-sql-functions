@@ -1,0 +1,18 @@
+-- preview nps table
+SELECT *
+FROM course17.gwz_nps_17;
+
+-- convert raw global_note (0-10) to NPS categories using CASE WHEN
+-- 9-10 → promoter (1), 7-8 → passive (0), 0-6 → detractor (-1)
+SELECT
+  date_date,
+  orders_id,
+  transporter,
+  global_note,
+  CASE
+    WHEN global_note IN (9, 10) THEN 1
+    WHEN global_note IN (7, 8) THEN 0
+    WHEN global_note BETWEEN 0 AND 6 THEN -1
+    ELSE NULL
+  END AS nps
+FROM course17.gwz_nps_17;
