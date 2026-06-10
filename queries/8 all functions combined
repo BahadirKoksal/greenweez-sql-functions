@@ -1,0 +1,12 @@
+-- apply all three functions in a single query
+-- one raw transporter column → two analytical dimensions
+-- one raw global_note score → one NPS category
+SELECT
+  date_date,
+  orders_id,
+  course17.delivery_mode(transporter) AS delivery_mode,
+  course17.transporter_brand(transporter) AS transporter_brand,
+  transporter,
+  global_note,
+  course17.nps(global_note) AS nps
+FROM course17.gwz_nps_17;
